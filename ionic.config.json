@@ -1,0 +1,7 @@
+{
+  "name": "SaoBento",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
