@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-title>AVISOS</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon
+        class="ion-back-button"
+        icon="arrow-back"
+        size="large"
+        (click)="navBack()"
+      ></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <div id="container">
+    <ion-card >
+      <b style="font-size: 20px">{{data.Title}}</b>
+      <b style="margin-top: 20px">{{data.Subtitle}}</b>
+      <div style="margin-top: 20px;"[innerHTML]="data.Content | safeHtml"></div>
+    </ion-card>
+  </div>
+  
+  
+</ion-content>

@@ -1,0 +1,185 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-title>CADASTRO</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon
+        class="ion-back-button"
+        icon="arrow-back"
+        size="large"
+        (click)="navBack()"
+      ></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <!--<ion-card *ngIf="page == 1">
+      <b>Dados do responsável</b>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Nome do responsável</ion-label>
+          <ion-input [(ngModel)]="user.NomeResponsavel"></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">CPF do Responsável</ion-label>
+          <ion-input
+            type="tel"
+            maxlength="14"
+            (ionChange)="updateWithMaskCPF($event)"
+            [(ngModel)]="user.CpfResponsavel"
+          ></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating"
+            >Data de nascimento do responsável</ion-label
+          >
+          <ion-input
+            type="tel"
+            maxlength="10"
+            (ionChange)="updateWithMaskDateR($event)"
+            [(ngModel)]="user.DataResponsavel"
+          ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Endereço</ion-label>
+          <ion-input [(ngModel)]="user.Endereco"></ion-input>
+        </ion-item>
+      </div>
+
+      <ion-button (click)="proximo()">Próximo</ion-button>
+    </ion-card>
+
+    <ion-card *ngIf="page == 2">
+      <b>Aluno</b>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Nome do aluno</ion-label>
+          <ion-input [(ngModel)]="user.NomeAluno"></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Data de nascimento do aluno</ion-label>
+          <ion-input type="tel" maxlength="10" (ionChange)="updateWithMaskDateA($event)" [(ngModel)]="user.DataAluno"></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Nome do pai</ion-label>
+          <ion-input [(ngModel)]="user.NomePai"></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Nome da mãe</ion-label>
+          <ion-input [(ngModel)]="user.NomeMae"></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Alergias</ion-label>
+          <ion-input [(ngModel)]="user.Alergias"></ion-input>
+        </ion-item>
+      </div>
+      <div class="row">
+        <div class="row" style="margin-top: 10px">
+          <h6>Possúi plano de saúde?</h6>
+          <ion-checkbox
+          [(ngModel)]="user.PlanoSaude"
+            style="margin-left: 10px"
+            color="primary"
+          ></ion-checkbox>
+        </div>
+      </div>
+
+      <div class="row">
+        <ion-button (click)="anterior()">Anterior</ion-button>
+        <ion-button (click)="proximo()">Próximo</ion-button>
+      </div>
+    </ion-card>-->
+
+    <!--<ion-card *ngIf="page == 3">
+      <b>Contato</b>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Telefone para contato</ion-label>
+          <ion-input
+            type="tel"
+            maxlength="16"
+            (ionChange)="updateWithMaskTel($event)"
+            [(ngModel)]="user.Telefone"
+          ></ion-input>
+        </ion-item>
+      </div>
+
+      <h6 style="margin: 10px 10px 0px 10px">Horário desejado:</h6>
+      <div class="input">
+        <ion-select
+          [(ngModel)]="user.Horario"
+          style="height: 58px"
+          value="Manhã"
+          cancelText="Cancelar"
+          interface="action-sheet"
+        >
+          <ion-select-option value="Manhã">Manhã</ion-select-option>
+          <ion-select-option value="Tarde">Tarde</ion-select-option>
+          <ion-select-option value="Extendido">Extendido</ion-select-option>
+        </ion-select>
+      </div>
+
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Responsável financeiro</ion-label>
+          <ion-input [(ngModel)]="user.ResponsavelFinanceiro"></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Responsável pedagógico</ion-label>
+          <ion-input [(ngModel)]="user.ResponsavelPedagogico"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="row">
+        <ion-button (click)="anterior()">Anterior</ion-button>
+        <ion-button (click)="proximo()">Próximo</ion-button>
+      </div>
+    </ion-card>-->
+
+    <ion-card *ngIf="page == 1">
+      <b>Cadastro</b>
+      <p style="color: black; text-align: center; margin: 10px; font-size: 15px">Dados do responsável</p>
+
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">E-mail</ion-label>
+          <ion-input [(ngModel)]="user.Email" type="email"></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Senha</ion-label>
+          <ion-input [(ngModel)]="user.Senha" type="password"></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Confirme a senha</ion-label>
+          <ion-input [(ngModel)]="user.Senha2" type="password"></ion-input>
+        </ion-item>
+      </div>
+      <p style="color: black; text-align: center; margin: 10px; font-size: 15px">Ao se cadastrar você concorda com a <b style="font-size: 15px; color: blue">política de privacidade</b>.</p>
+      <div class="row">
+        <ion-button (click)="cadastrar()">CADASTRAR</ion-button>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>

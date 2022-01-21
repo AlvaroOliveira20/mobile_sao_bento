@@ -3,13 +3,22 @@
 
 /** Ionic CSS Variables **/
 :root {
+  .modal-backdrop{
+    visibility: hidden;
+  }
+  .note-popover .popover-content .note-color .dropdown-menu .note-palette, .panel-heading.note-toolbar .note-color .dropdown-menu .note-palette {
+    display: block;
+    width: 160px;
+    margin: 0;
+}
+  
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: rgb(199, 182, 150);
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
-  --ion-color-primary-tint: #4c8dff;
+  --ion-color-primary-shade: rgb(165, 143, 103);
+  --ion-color-primary-tint: rgb(165, 143, 103);
 
   /** secondary **/
   --ion-color-secondary: #3dc2ff;

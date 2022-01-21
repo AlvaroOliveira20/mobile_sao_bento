@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-title>EDITAR CARDAPIO</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon
+        class="ion-back-button"
+        icon="arrow-back"
+        size="large"
+        (click)="navBack()"
+      ></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-card>
+      <div style="width: 100%; display: flex">
+        <div style="margin-bottom: 5px" class="input">
+          <ion-item lines="none">
+            <ion-label position="floating">Título</ion-label>
+            <ion-input  [(ngModel)]="user.Titulo"></ion-input>
+          </ion-item>
+        </div>
+      </div>
+     
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 20px;
+          justify-content: center;
+          align-items: center;
+        "
+        class="input"
+      >
+        <b>Descrição</b>
+        <div id="summernote"></div>
+      </div>
+    </ion-card>
+    <ion-button (click)="salvar()">Salvar</ion-button>
+  </div>
+</ion-content>

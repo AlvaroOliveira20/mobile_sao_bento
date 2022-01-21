@@ -1,0 +1,212 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-title>MATRÍCULA</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon
+        class="ion-back-button"
+        icon="arrow-back"
+        size="large"
+        (click)="navBack()"
+      ></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="page == 1" [fullscreen]="true">
+  <div id="container">
+    <ion-card >
+      <b style="font-size: 20px; margin: 10px; text-align: center">Dados do aluno</b>
+    
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Nome do aluno</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">CPF</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">RG</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Naturalidade</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Data de nascimento</ion-label>
+          <ion-input [(ngModel)]="user.DataAluno" type="tel" maxlength="10" (ionChange)="updateWithMaskDateA($event)"></ion-input>
+        </ion-item>
+      </div>
+      
+      
+      <div class = "row">
+        
+      <ion-button (click)="next()">Próximo</ion-button>
+    </div>
+    </ion-card>
+  </div>
+</ion-content>
+
+
+
+
+<ion-content *ngIf="page == 2" [fullscreen]="true">
+  <div id="container">
+    <ion-card >
+      <b style="font-size: 20px; margin: 10px; text-align: center">Dados do aluno</b>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Endereço</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">CEP</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Bairro</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Telefone</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Alergias</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Em caso de febre/dor - Tomar:</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      <div class="row">
+        <div class="row" style="margin-top: 10px">
+          <h6>Possúi plano de saúde?</h6>
+          <ion-checkbox
+        
+            style="margin-left: 10px"
+            color="primary"
+          ></ion-checkbox>
+        </div>
+      </div>
+      <div class = "row">
+        <ion-button (click)="prev()">Anterior</ion-button>
+      <ion-button (click)="next()">Próximo</ion-button>
+    </div>
+    </ion-card>
+  </div>
+</ion-content>
+
+
+
+<ion-content *ngIf="page == 3" [fullscreen]="true">
+  <div id="container">
+    <ion-card >
+      <b style="font-size: 20px; margin: 10px; text-align: center">Dados do pai</b>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Nome do pai</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">CPF</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">RG</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Local de trabalho</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Instrução</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      
+      <div class = "row">
+        <ion-button (click)="prev()">Anterior</ion-button>
+      <ion-button (click)="next()">Próximo</ion-button>
+    </div>
+    </ion-card>
+  </div>
+</ion-content>
+
+
+
+
+
+<ion-content *ngIf="page == 4" [fullscreen]="true">
+  <div id="container">
+    <ion-card >
+      <b style="font-size: 20px; margin: 10px; text-align: center">Dados da mãe</b>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Nome da mãe</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">CPF</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">RG</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Local de trabalho</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Instrução</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+      </div>
+      
+      <div class = "row">
+        <ion-button (click)="prev()">Anterior</ion-button>
+      <ion-button >Finalizar</ion-button>
+    </div>
+    </ion-card>
+  </div>
+</ion-content>
+

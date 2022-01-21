@@ -1,0 +1,66 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+  }
+  ion-content {
+     
+    --background: rgb(255, 246, 229);
+  }
+  .row{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  img {
+    width: 50%;
+  }
+ 
+  ion-card{
+    overflow-y: scroll;
+    background-color: rgb(255, 255, 255);
+    width: 98%;
+    height: 98%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    align-items: center;
+    border-radius: 5px;
+  }
+  
+  .input{
+    margin-top: 7px;
+    border-color: rgba(255, 255, 255, 0.582);
+    border-radius: 6px;
+    border-width: 1px;
+    padding: 2px;
+    border-style: outset;
+    border-color: black;
+    width: 100%;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.192);
+  }
+  ion-toolbar{
+      --background: rgb(241, 230, 209);
+      
+      
+  }
+  ion-button{
+      margin-top: 10px;
+    width: 90%;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.192);
+    border-radius: 6px;
+  }
+ 
+  ion-input{
+    border-radius: 10px;
+  }
+  .cadastre{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }

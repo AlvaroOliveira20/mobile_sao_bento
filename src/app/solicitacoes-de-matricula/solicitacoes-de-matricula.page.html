@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-title >SOLICITAÇÕES DE MATRÍCULA</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-icon
+        class="ion-back-button"
+        icon="arrow-back"
+        size="large"
+        (click)="navBack()"
+      ></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-tabs>
+
+    
+    <div id="container"  *ngIf="tab==1">
+      <b *ngIf="ativos==0" style="font-size: 20px">Não há avisos ativos</b>
+      <div style="width: 100%; justify-content: center; align-items: center; display: flex" *ngFor="let i of avisos">
+        <ion-card
+          *ngIf="i.CanShow"
+          style="padding-top: 40px; padding-bottom: 40px"
+          (click)="visualizar(i.uid)"
+        >
+          <p style="margin-bottom: 10px; color: #000">
+            De {{i.CriadoEm}} a {{i.Validade}}
+          </p>
+
+          <b style="font-size: 20px">{{i.Title}}</b>
+
+          <p style="margin-top: 10px; color: #000">{{i.Subtitle}}</p>
+        </ion-card>
+      </div>
+    </div>
+    <div id="container"  *ngIf="tab==2">
+      <b *ngIf="inativos==0" style="font-size: 20px">Não há avisos inativos</b>
+      <div style="width: 100%; justify-content: center; align-items: center; display: flex" *ngFor="let i of avisos">
+        <ion-card
+          *ngIf="!i.CanShow"
+          style="padding-top: 40px; padding-bottom: 40px"
+          (click)="visualizar(i.uid)"
+        >
+          <p style="margin-bottom: 10px; color: #000">
+            De {{i.CriadoEm}} a {{i.Validade}}
+          </p>
+
+          <b style="font-size: 20px">{{i.Title}}</b>
+
+          <p style="margin-top: 10px; color: #000">{{i.Subtitle}}</p>
+        </ion-card>
+      </div>
+    </div>
+    <ion-tab-bar style="--background: rgb(247, 228, 193)" slot="bottom">
+      <ion-tab-button
+        (click)="activateTab(1)"
+        style="background-color: {{bg1}}; border-radius: 10px; margin:2px"
+      >
+        <b>Em aberto</b>
+      </ion-tab-button>
+
+      <ion-tab-button
+        (click)="activateTab(2)"
+        style="background-color: {{bg2}};  border-radius: 10px; margin:2px"
+      >
+        <b>Confirmados</b>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-title>FINALIZAR CADASTRO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-card >
+      <b style="font-size: 20px; margin: 10px; text-align: center">Dados do responsável</b>
+      <p style="color:black; margin: 10px; text-align: center">Para acessar o app, termine o seu cadastro.</p>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Nome do responsável</ion-label>
+          <ion-input [(ngModel)]="user.NomeResponsavel"></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">CPF do Responsável</ion-label>
+          <ion-input
+            type="tel"
+            maxlength="14"
+            (ionChange)="updateWithMaskCPF($event)"
+            [(ngModel)]="user.CpfResponsavel"
+          ></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating"
+            >Data de nascimento do responsável</ion-label
+          >
+          <ion-input
+            type="tel"
+            maxlength="10"
+            (ionChange)="updateWithMaskDateR($event)"
+            [(ngModel)]="user.DataResponsavel"
+          ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating">Endereço</ion-label>
+          <ion-input [(ngModel)]="user.Endereco"></ion-input>
+        </ion-item>
+      </div>
+
+      <ion-button (click)="cadastrar()">Finalizar cadastro</ion-button>
+      <ion-button fill="clear" style="box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.192);" (click)="logout()">Desconectar</ion-button>
+    </ion-card>
+
+
+  </div>
+</ion-content>

@@ -1,0 +1,256 @@
+<ion-menu side="start" menuId="first" contentId="main">
+  <ion-content>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        align-items: center;
+      "
+    >
+      <!--USUÁRIO LOGADO-->
+      <img src="../../../assets/images/Logo.png" style="margin-top: 20px" />
+      <b style="margin: 10px">{{user.NomeResponsavel}}</b>
+      <!--DIVISOR DO MENU-->
+      <div
+        style="
+          margin-top: 25px;
+          width: 80%;
+          background: #fff;
+          border-style: solid;
+          border-color: var(--background-side-divider);
+          border-width: 1px;
+        "
+      ></div>
+      <!--ITEM VISUALIZADOR 3D-->
+      <div
+        style="
+          width: 100%;
+          --background: rgba(0, 0, 0, 0);
+          margin-top: 20px;
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <ion-item
+          lines="none"
+          style="
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            --background: rgba(0, 0, 0, 0);
+          "
+        >
+          <p
+            style="
+              color: var(--background-side-divider);
+              text-align: center;
+              margin-left: 20px;
+            "
+          >
+            Cardapio
+          </p>
+        </ion-item>
+        <ion-item
+          lines="none"
+          style="
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            --background: rgba(0, 0, 0, 0);
+          "
+          (click)="navigate('visualizar-avisos')"
+        >
+          <p
+            style="
+              color: var(--background-side-divider);
+              text-align: center;
+              margin-left: 20px;
+            "
+          >
+            Avisos
+          </p>
+        </ion-item>
+        <ion-item
+          lines="none"
+          *ngIf="!user.Admin"
+          style="
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            --background: rgba(0, 0, 0, 0);
+          "
+        >
+          <p
+            style="
+              color: var(--background-side-divider);
+              text-align: center;
+              margin-left: 20px;
+            "
+          >
+            Frequência
+          </p>
+        </ion-item>
+        <ion-item
+          *ngIf="!user.Admin"
+          lines="none"
+          style="
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            --background: rgba(0, 0, 0, 0);
+          "
+        >
+          <p style="text-align: center; margin-left: 20px">Financeiro</p>
+        </ion-item>
+        <ion-item
+          lines="none"
+          *ngIf="user.Admin"
+          style="
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            --background: rgba(0, 0, 0, 0);
+          "
+          (click)="navigate('edicao-do-cardapio')"
+        >
+          <p style="text-align: center; margin-left: 20px">
+            Edição do cardápio
+          </p>
+        </ion-item>
+        <ion-item
+          lines="none"
+          *ngIf="user.Admin"
+          style="
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            --background: rgba(0, 0, 0, 0);
+          "
+        >
+          <p style="text-align: center; margin-left: 20px">Lista de alunos</p>
+        </ion-item>
+        <ion-item
+          lines="none"
+          *ngIf="user.Admin"
+          style="
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            --background: rgba(0, 0, 0, 0);
+          "
+          (click)="navigate('edicao-de-avisos')"
+        >
+          <p style="text-align: center; margin-left: 20px">Edição de avisos</p>
+        </ion-item>
+      </div>
+      <!--BOTÃO DESLOGAR-->
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          align-items: center;
+          flex: 1;
+          justify-content: flex-end;
+        "
+      >
+        <div
+          style="
+            margin-top: 25px;
+            width: 100%;
+            background: #fff;
+            border-style: solid;
+            border-color: var(--background-side-divider);
+            border-width: 0.1px;
+          "
+        ></div>
+        <ion-item
+          (click)="logout()"
+          lines="none"
+          style="
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            --background: rgba(0, 0, 0, 0);
+          "
+        >
+          <p style="text-align: center; margin-left: 20px">Sair</p>
+        </ion-item>
+      </div>
+    </div>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet id="main"></ion-router-outlet>
+<ion-content style="display: flex; flex-direction: column">
+  <div style="height: 100%; width: 100%; display: flex; flex-direction: column">
+    <ion-icon
+      (click)="openFirst()"
+      style="font-size: 40px; margin: 10px"
+      name="menu-outline"
+    ></ion-icon>
+    <div id="container" style="flex: 1">
+      <img src="../../assets/images/Logo.png" />
+      <div style="width: 100%;">
+        <div class="row">
+          <ion-card  (click)="navigate('visualizar-cardapio')">
+            <ion-icon
+              style="font-size: 65px"
+              name="fast-food-outline"
+            ></ion-icon>
+            <b>Cardápio</b>
+          </ion-card>
+          <ion-card (click)="navigate('visualizar-avisos')">
+            <ion-icon
+              style="font-size: 65px"
+              name="document-outline"
+            ></ion-icon>
+            <b>Avisos</b>
+          </ion-card>
+        </div>
+        <div class="row"  *ngIf="!user.Admin">
+          <ion-card >
+            <ion-icon
+              style="font-size: 65px"
+              name="stats-chart-outline"
+            ></ion-icon>
+            <b>Frequência</b>
+          </ion-card>
+          <ion-card (click)="navigate('matricular-aluno')">
+            <ion-icon style="font-size: 65px" name="person-add-outline"></ion-icon>
+            <b>Matricular aluno</b>
+          </ion-card>
+        </div>
+        <div class="row"  *ngIf="user.Admin">
+          <ion-card (click)="navigate('edicao-de-avisos')" >
+            <ion-icon
+              style="font-size: 65px"
+              name="create-outline"
+            ></ion-icon>
+            <b>Edição de avisos</b>
+          </ion-card>
+          <ion-card>
+            <ion-icon style="font-size: 65px" name="list-outline"></ion-icon>
+            <b>Lista de alunos</b>
+          </ion-card>
+        </div>
+        <div class="row"  *ngIf="user.Admin">
+          <ion-card (click)="navigate('edicao-do-cardapio')" >
+            <div class="row">
+              <ion-icon style="font-size: 65px" name="pizza-outline"></ion-icon>
+              <ion-icon style="font-size: 45px; margin-left: -39px; margin-top: -10px; color: #444" name="pencil-outline"></ion-icon>
+              </div>
+            <b>Edição do Cardápio</b>
+          </ion-card>
+          <ion-card (click)="navigate('solicitacoes-de-matricula')" >
+            <div class="row">
+            <ion-icon style="font-size: 65px" name="person-add-outline"></ion-icon>
+         
+            </div>
+            <b>Solicitações de matrícula</b>
+          </ion-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
