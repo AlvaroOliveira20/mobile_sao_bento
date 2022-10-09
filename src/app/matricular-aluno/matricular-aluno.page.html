@@ -1,8 +1,9 @@
 <ion-header>
   <ion-toolbar class="toolbar">
-    <ion-title>MATRÍCULA</ion-title>
+    <ion-title style="color:black">MATRÍCULA</ion-title>
     <ion-buttons slot="start">
       <ion-icon
+      style="color:black"
         class="ion-back-button"
         icon="arrow-back"
         size="large"
@@ -12,201 +13,366 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="page == 1" [fullscreen]="true">
+<ion-content *ngIf="page == 0" [fullscreen]="true">
   <div id="container">
-    <ion-card >
-      <b style="font-size: 20px; margin: 10px; text-align: center">Dados do aluno</b>
-    
-      <div class="input">
-        <ion-item lines="none">
-          <ion-label position="floating">Nome do aluno</ion-label>
-          <ion-input ></ion-input>
-        </ion-item>
+    <ion-card style="height: 95%">
+      <b style="font-size: 20px; margin: 10px; text-align: center"
+        >CONTRATO PARA MATRÍCULA<br />
+        COLÉGIO SÃO BENTO</b
+      >
+      <p style="color: black; text-align: justify; width: 90%">
+        - Valor da matrícula: R$0,00<br />- Valor das mensalidades: R$0,00<br />
+        <br />
+        Como funciona: <br> Você pode realizar a matrícula de forma presencial ou
+        pelo próprio app através do pagamento via PIX. Para realizar o pagamento
+        você deve solicitar a matrícula do aluno submetendo os dados através
+        deste formulário. Após a análise dos dados, o pagamento será liberado
+        através de um QR code do PIX. quando o pagamento for aprovado, seu
+        processo de matrícula será concluído.
+      </p>
+      <div class="row">
+        <ion-checkbox
+          [(ngModel)]="user.Termos"
+          style="margin-right: 10px"
+
+        ></ion-checkbox>
+        <p (click)="checkboxSet('this.user.Termos')" style="color: black">Concordo com os termos.</p>
       </div>
-      <div class="input">
-        <ion-item lines="none">
-          <ion-label position="floating">CPF</ion-label>
-          <ion-input ></ion-input>
-        </ion-item>
+
+      <div class="row">
+        <ion-button disabled="{{!user.Termos}}" (click)="next()"
+          >Próximo</ion-button
+        >
       </div>
-      <div class="input">
-        <ion-item lines="none">
-          <ion-label position="floating">RG</ion-label>
-          <ion-input ></ion-input>
-        </ion-item>
-      </div>
-      <div class="input">
-        <ion-item lines="none">
-          <ion-label position="floating">Naturalidade</ion-label>
-          <ion-input ></ion-input>
-        </ion-item>
-      </div>
-      <div class="input">
-        <ion-item lines="none">
-          <ion-label position="floating">Data de nascimento</ion-label>
-          <ion-input [(ngModel)]="user.DataAluno" type="tel" maxlength="10" (ionChange)="updateWithMaskDateA($event)"></ion-input>
-        </ion-item>
-      </div>
-      
-      
-      <div class = "row">
-        
-      <ion-button (click)="next()">Próximo</ion-button>
-    </div>
     </ion-card>
   </div>
 </ion-content>
 
+<ion-content *ngIf="page == 1" [fullscreen]="true">
+  <div id="container">
+    <ion-card>
+      <b style="font-size: 20px; margin: 10px; text-align: center"
+        >Dados do aluno</b
+      >
 
+      <div class="input">
+        <ion-item lines="none" >
+          <ion-label position="floating"
+            >Nome do aluno<b style="color: red">*</b></ion-label
+          >
+          <ion-input  [(ngModel)]="user.NomeAluno"></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating"
+            >CPF<b style="color: red">*</b></ion-label
+          >
+          <ion-input
+            maxlength="14"
+            (ionChange)="updateWithMaskCPF($event)"
+            [(ngModel)]="user.CpfAluno"
+          ></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating"
+            >RG<b style="color: red">*</b></ion-label
+          >
+          <ion-input [(ngModel)]="user.RgAluno"></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating"
+            >Naturalidade<b style="color: red">*</b></ion-label
+          >
+          <ion-input [(ngModel)]="user.NaturalidadeAluno"></ion-input>
+        </ion-item>
+      </div>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating"
+            >Data de nascimento<b style="color: red">*</b></ion-label
+          >
+          <ion-input
+            [(ngModel)]="user.DataAluno"
+            type="tel"
+            maxlength="10"
+            (ionChange)="updateWithMaskDateA($event)"
+          ></ion-input>
+        </ion-item>
+      </div>
 
+      <div class="row">
+        <ion-button (click)="prev()">Anterior</ion-button>
+        <ion-button (click)="next()">Próximo</ion-button>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>
 
 <ion-content *ngIf="page == 2" [fullscreen]="true">
   <div id="container">
-    <ion-card >
-      <b style="font-size: 20px; margin: 10px; text-align: center">Dados do aluno</b>
+    <ion-card>
+      <b style="font-size: 20px; margin: 10px; text-align: center"
+        >Dados do aluno</b
+      >
       <div class="input">
         <ion-item lines="none">
-          <ion-label position="floating">Endereço</ion-label>
-          <ion-input ></ion-input>
+          <ion-label position="floating"
+            >Endereço<b style="color: red">*</b></ion-label
+          >
+          <ion-input [(ngModel)]="user.EnderecoAluno"></ion-input>
         </ion-item>
       </div>
       <div class="input">
         <ion-item lines="none">
-          <ion-label position="floating">CEP</ion-label>
-          <ion-input ></ion-input>
+          <ion-label position="floating"
+            >CEP<b style="color: red">*</b></ion-label
+          >
+          <ion-input
+            maxlength="9"
+            (ionChange)="updateWithMaskCEP($event)"
+            [(ngModel)]="user.CepAluno"
+          ></ion-input>
         </ion-item>
       </div>
       <div class="input">
         <ion-item lines="none">
-          <ion-label position="floating">Bairro</ion-label>
-          <ion-input ></ion-input>
+          <ion-label position="floating"
+            >Bairro<b style="color: red">*</b></ion-label
+          >
+          <ion-input [(ngModel)]="user.BairroAluno"></ion-input>
         </ion-item>
       </div>
       <div class="input">
         <ion-item lines="none">
-          <ion-label position="floating">Telefone</ion-label>
-          <ion-input ></ion-input>
+          <ion-label position="floating"
+            >Telefone<b style="color: red">*</b></ion-label
+          >
+          <ion-input
+            maxlength="16"
+            (ionChange)="updateWithMaskTEL($event)"
+            [(ngModel)]="user.TelefoneContato"
+          ></ion-input>
         </ion-item>
       </div>
       <div class="input">
         <ion-item lines="none">
           <ion-label position="floating">Alergias</ion-label>
-          <ion-input ></ion-input>
+          <ion-input [(ngModel)]="user.AlergiaAluno"></ion-input>
         </ion-item>
       </div>
       <div class="input">
         <ion-item lines="none">
-          <ion-label position="floating">Em caso de febre/dor - Tomar:</ion-label>
-          <ion-input ></ion-input>
+          <ion-label position="floating"
+            >Em caso de febre/dor - Tomar:</ion-label
+          >
+          <ion-input [(ngModel)]="user.RemediosAluno"></ion-input>
         </ion-item>
       </div>
-      <div class="row">
-        <div class="row" style="margin-top: 10px">
-          <h6>Possúi plano de saúde?</h6>
-          <ion-checkbox
+      <div class="row" style="margin-top: 10px;">
+        <p (click)="checkboxSet('this.user.PlanoSaudeAluno')" style="color: black">Possúi plano de saúde?</p>
+        <ion-checkbox
+        [(ngModel)]="user.PlanoSaudeAluno"
+          style="margin-left: 10px"
+
+        ></ion-checkbox>
         
-            style="margin-left: 10px"
-            color="primary"
-          ></ion-checkbox>
-        </div>
       </div>
-      <div class = "row">
+      
+      <div class="row">
         <ion-button (click)="prev()">Anterior</ion-button>
-      <ion-button (click)="next()">Próximo</ion-button>
-    </div>
+        <ion-button (click)="next()">Próximo</ion-button>
+      </div>
     </ion-card>
   </div>
 </ion-content>
-
-
 
 <ion-content *ngIf="page == 3" [fullscreen]="true">
   <div id="container">
-    <ion-card >
-      <b style="font-size: 20px; margin: 10px; text-align: center">Dados do pai</b>
+    <ion-card>
+      <b style="font-size: 20px; margin: 10px; text-align: center"
+        >Dados do pai</b
+      >
       <div class="input">
         <ion-item lines="none">
-          <ion-label position="floating">Nome do pai</ion-label>
-          <ion-input ></ion-input>
+          <ion-label position="floating"
+            >Nome do pai<b style="color: red">*</b></ion-label
+          >
+          <ion-input [(ngModel)]="user.NomePai"></ion-input>
         </ion-item>
       </div>
       <div class="input">
         <ion-item lines="none">
-          <ion-label position="floating">CPF</ion-label>
-          <ion-input ></ion-input>
+          <ion-label position="floating"
+            >CPF<b style="color: red">*</b></ion-label
+          >
+          <ion-input
+            maxlength="14"
+            (ionChange)="updateWithMaskCPFP($event)"
+            [(ngModel)]="user.CpfPai"
+          ></ion-input>
         </ion-item>
       </div>
       <div class="input">
         <ion-item lines="none">
-          <ion-label position="floating">RG</ion-label>
-          <ion-input ></ion-input>
+          <ion-label position="floating"
+            >RG<b style="color: red">*</b></ion-label
+          >
+          <ion-input [(ngModel)]="user.RgPai"></ion-input>
         </ion-item>
       </div>
       <div class="input">
         <ion-item lines="none">
-          <ion-label position="floating">Local de trabalho</ion-label>
-          <ion-input ></ion-input>
+          <ion-label position="floating"
+            >Local de trabalho<b style="color: red">*</b></ion-label
+          >
+          <ion-input [(ngModel)]="user.TrabalhoPai"></ion-input>
         </ion-item>
       </div>
       <div class="input">
         <ion-item lines="none">
-          <ion-label position="floating">Instrução</ion-label>
-          <ion-input ></ion-input>
+          <ion-label position="floating"
+            >Instrução<b style="color: red">*</b></ion-label
+          >
+          <ion-input [(ngModel)]="user.InstrucaoPai"></ion-input>
         </ion-item>
       </div>
-      
-      <div class = "row">
+
+      <div class="row">
         <ion-button (click)="prev()">Anterior</ion-button>
-      <ion-button (click)="next()">Próximo</ion-button>
-    </div>
+        <ion-button (click)="next()">Próximo</ion-button>
+      </div>
     </ion-card>
   </div>
 </ion-content>
-
-
-
-
 
 <ion-content *ngIf="page == 4" [fullscreen]="true">
   <div id="container">
-    <ion-card >
-      <b style="font-size: 20px; margin: 10px; text-align: center">Dados da mãe</b>
+    <ion-card>
+      <b style="font-size: 20px; margin: 10px; text-align: center"
+        >Dados da mãe</b
+      >
       <div class="input">
         <ion-item lines="none">
-          <ion-label position="floating">Nome da mãe</ion-label>
-          <ion-input ></ion-input>
+          <ion-label position="floating"
+            >Nome da mãe<b style="color: red">*</b></ion-label
+          >
+          <ion-input [(ngModel)]="user.NomeMae"></ion-input>
         </ion-item>
       </div>
       <div class="input">
         <ion-item lines="none">
-          <ion-label position="floating">CPF</ion-label>
-          <ion-input ></ion-input>
+          <ion-label position="floating"
+            >CPF<b style="color: red">*</b></ion-label
+          >
+          <ion-input
+            maxlength="14"
+            (ionChange)="updateWithMaskCPFM($event)"
+            [(ngModel)]="user.CpfMae"
+          ></ion-input>
         </ion-item>
       </div>
       <div class="input">
         <ion-item lines="none">
-          <ion-label position="floating">RG</ion-label>
-          <ion-input ></ion-input>
+          <ion-label position="floating"
+            >RG<b style="color: red">*</b></ion-label
+          >
+          <ion-input [(ngModel)]="user.RgMae"></ion-input>
         </ion-item>
       </div>
       <div class="input">
         <ion-item lines="none">
-          <ion-label position="floating">Local de trabalho</ion-label>
-          <ion-input ></ion-input>
+          <ion-label position="floating"
+            >Local de trabalho<b style="color: red">*</b></ion-label
+          >
+          <ion-input [(ngModel)]="user.TrabalhoMae"></ion-input>
         </ion-item>
       </div>
       <div class="input">
         <ion-item lines="none">
-          <ion-label position="floating">Instrução</ion-label>
-          <ion-input ></ion-input>
+          <ion-label position="floating"
+            >Instrução<b style="color: red">*</b></ion-label
+          >
+          <ion-input [(ngModel)]="user.InstrucaoMae"></ion-input>
         </ion-item>
       </div>
-      
-      <div class = "row">
+
+      <div class="row">
         <ion-button (click)="prev()">Anterior</ion-button>
-      <ion-button >Finalizar</ion-button>
-    </div>
+        <ion-button (click)="next()">Proximo</ion-button>
+      </div>
     </ion-card>
   </div>
 </ion-content>
 
+<ion-content *ngIf="page == 5" [fullscreen]="true">
+  <div id="container">
+    <ion-card>
+      <div class="input">
+        <ion-item lines="none">
+          <ion-label position="floating"
+            >Nome do reponsável<b style="color: red">*</b></ion-label
+          >
+          <ion-input [(ngModel)]="user.Responsavel"></ion-input>
+        </ion-item>
+      </div>
+      <b style="font-size: 20px; margin-top: 10px; text-align: center"
+        >Turma<b style="color: red">*</b></b
+      >
+      <div class="input" style="margin-bottom: 20px">
+        <ion-select
+          [(ngModel)]="user.Turma"
+          style="height: 58px"
+          value="Manhã"
+          cancelText="Cancelar"
+          interface="action-sheet"
+        >
+          <ion-select-option value="Manhã">Maternal I</ion-select-option>
+          <ion-select-option value="Tarde">Maternal II</ion-select-option>
+          <ion-select-option value="Tarde">Maternal III</ion-select-option>
+          <ion-select-option value="Extendido">Jardim I</ion-select-option>
+          <ion-select-option value="Extendido">Jardim II</ion-select-option>
+        </ion-select>
+      </div>
+      <b style="font-size: 20px; margin-top: 10px; text-align: center"
+        >Horário desejado<b style="color: red">*</b></b
+      >
+      <div class="input" style="margin-bottom: 20px">
+        <ion-select
+          [(ngModel)]="user.Horario"
+          style="height: 58px"
+          value="Manhã"
+          cancelText="Cancelar"
+          interface="action-sheet"
+        >
+          <ion-select-option value="Manhã">Manhã</ion-select-option>
+          <ion-select-option value="Tarde">Tarde</ion-select-option>
+          <ion-select-option value="Extendido">Extendido</ion-select-option>
+        </ion-select>
+      </div>
+      <b style="font-size: 20px; margin-top: 10px; text-align: center"
+        >Forma de pagamento<b style="color: red">*</b></b
+      >
+      <div class="input" style="margin-bottom: 20px">
+        <ion-select
+          [(ngModel)]="user.FormaPagamento"
+          style="height: 58px"
+          value="PIX"
+          cancelText="Cancelar"
+          interface="action-sheet"
+        >
+          <ion-select-option value="Manhã">PIX</ion-select-option>
+          <ion-select-option value="Tarde">Boleto</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="row">
+        <ion-button (click)="prev()">Anterior</ion-button>
+        <ion-button (click)="finalizar()">Finalizar</ion-button>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>

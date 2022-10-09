@@ -142,7 +142,8 @@ export class EditarAvisoPage implements OnInit {
     $('#summernote').summernote({
       
       height: '200',
-      width: $(window).width() * 0.8,
+      width: "100%",
+      
       toolbar: [
         ['style', ['bold', 'italic', 'underline']],
         ['para', ['ul', 'ol', 'paragraph']],

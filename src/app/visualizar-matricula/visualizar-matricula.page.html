@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-title>{{responsavel}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon
+        class="ion-back-button"
+        icon="arrow-back"
+        size="large"
+        (click)="navBack()"
+      ></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container" style="margin: 3%">
+    <ion-card style="height: 100%;">
+      <b style="font-size: 20px">DADOS DA MATRÍCULA</b>
+      <b style="margin-top: 20px">Solicitado por: {{responsavel}}</b>
+
+      <p style="margin-top: 20px; text-align: left; width: 100%">
+        Nome do aluno: {{data.NomeAluno}}
+        <br />
+        <br />
+        CPF do aluno: {{data.CpfAluno}}
+        <br />
+        <br />
+        RG do aluno: {{data.RgAluno}}
+        <br />
+        <br />
+        Naturalidade do aluno: {{data.NaturalidadeAluno}}
+        <br />
+        <br />
+        Data de nascimento: {{data.DataAluno}}
+        <br />
+        <br />
+        Endereco: {{data.EnderecoAluno}}
+        <br />
+        <br />
+        CEP: {{data.CepAluno}}
+        <br />
+        <br />
+        Bairro do aluno: {{data.BairroAluno}}
+        <br />
+        <br />
+        Telefone para contato: {{data.TelefoneContato}}
+        <br />
+        <br />
+        Alergias: {{data.AlergiaAluno}}
+        <br />
+        <br />
+        Remedios do aluno: {{data.RemediosAluno}}
+        <br />
+        <br />
+        Plano de Saude: {{data.PlanoSaudeAluno}}
+        <br />
+        <br />
+        Nome do pai: {{data.NomePai}}
+        <br />
+        <br />
+        CPF do pai: {{data.CpfPai}}
+        <br />
+        <br />
+        RG pai: {{data.RgPai}}
+        <br />
+        <br />
+        Trabalho do pai: {{data.TrabalhoPai}}
+        <br />
+        <br />
+        Instrucao do pai: {{data.InstrucaoPai}}
+        <br />
+        <br />
+        Nome da mãe: {{data.NomeMae}}
+        <br />
+        <br />
+        CPF mãe: {{data.CpfMae}}
+        <br />
+        <br />
+        RG mãe: {{data.RgMae}}
+        <br />
+        <br />
+        Trabalho da mãe: {{data.TrabalhoMae}}
+        <br />
+        <br />
+        Instrucao da mãe: {{data.InstrucaoMae}}
+        <br />
+        <br />
+        Turma: {{data.Turma}}
+        <br />
+        <br />
+        Horario: {{data.Horario}}
+        <br />
+        <br />
+        ID do solicitante: {{data.uid}}
+        <br />
+        <br />
+        Nº da solicitação: {{data.numeroSolicitacao}}
+      </p>
+ 
+
+      <b  *ngIf="data.Confirmado=='ativa'">Status: <b style="color: rgb(110, 206, 0)" >ATIVA</b></b>
+      <b  *ngIf="data.Confirmado=='aguardando-pagamento'">Status: <b style="color: rgb(255, 153, 0)" >AGUARDANDO PAGAMENTO</b></b>
+      <b  *ngIf="data.Confirmado=='inativa'">Status: <b style="color: rgb(255, 0, 0)" >INATIVA</b></b>
+      <b  *ngIf="data.Confirmado=='revogada'">Status: <b style="color: rgb(255, 0, 0)" >REVOGADA</b></b>
+      <b *ngIf="data.Confirmado=='aguardando-aprovacao'">Status: <b style="color: red" >AGUARDANDO APROVAÇÃO</b></b>
+    </ion-card>
+    
+      <ion-button *ngIf="data.Confirmado=='aguardando-aprovacao' || data.Confirmado=='revogada'" style="width: 100%; height: 50px; margin: 5px; border-radius: 1px" (click)="confirmar()">validar matricula</ion-button>
+      <ion-button *ngIf="data.Confirmado!='revogada'" style="height: 50px;width: 100%; margin: 5px; border-radius: 1px" (click)="revogar()">Revogar matrícula</ion-button>
+      <ion-button style="height: 50px;width: 100%; margin: 5px; border-radius: 1px" (click)="emitir()">Emitir ficha</ion-button>
+      
+  </div>
+</ion-content>

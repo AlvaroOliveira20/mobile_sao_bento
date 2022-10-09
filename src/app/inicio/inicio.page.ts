@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class InicioPage implements OnInit {
   public user: any = {
+    PaginaCarregada: null,
     NomeResponsavel: null,
     CpfResponsavel: null,
     DataResponsavel: null,
@@ -31,6 +32,32 @@ export class InicioPage implements OnInit {
     Senha2: null,
     Admin: null
   };
+  newdate(){
+    let i = 0
+    while ( i < 100){
+      i++
+      var data = new Date(),
+      dia = data.getDate().toString(),
+      diaF = dia.length == 1 ? '0' + dia : dia,
+      mes = (data.getMonth() + 1).toString(),
+      mesF = mes.length == 1 ? '0' + mes : mes,
+      anoF = data.getFullYear(),
+      hor = data.getHours(),
+      min = data.getMinutes(),
+      sec = data.getSeconds(),
+      mil:any = data.getMilliseconds().toString()
+      if(mil.toString().length == 1){
+        mil = mil + '00'
+      }else if (mil.toString().length == 2){
+        mil = mil + '0'  
+      }
+
+    
+
+    console.log(anoF.toString()[2]+anoF.toString()[3]+mil+Math.round((100+(Math.random()*(999-100)))))
+  }
+    } 
+    
   constructor(
     private afs: AngularFirestore,
     public alertController: AlertController,
@@ -42,12 +69,14 @@ export class InicioPage implements OnInit {
     this.presentAlert();
   }
   async ionViewWillEnter() {
+    this.user.PaginaCarregada = false;
     var user = firebase.auth().currentUser;
     let usuario = (
       await this.afs.firestore.collection('Users').doc(user.uid).get()
     ).data();
     this.user.NomeResponsavel = usuario.NomeResponsavel;
     this.user.Admin = usuario.Admin;
+    this.user.PaginaCarregada = true;
   }
   navigate(target){
     this.router.navigateByUrl("/"+target+"")

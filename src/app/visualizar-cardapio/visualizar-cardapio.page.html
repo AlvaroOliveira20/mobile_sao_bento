@@ -1,8 +1,9 @@
 <ion-header>
   <ion-toolbar class="toolbar">
-    <ion-title>CARDÁPIO</ion-title>
+    <ion-title style="color:black">CARDÁPIO</ion-title>
     <ion-buttons slot="start">
       <ion-icon
+        style="color:black"
         class="ion-back-button"
         icon="arrow-back"
         size="large"
@@ -15,7 +16,12 @@
 <ion-content [fullscreen]="true">
   
   <div id="container">
-    <ion-card >
+    <div *ngIf="!data.PaginaCarregada" id="container" style="flex: 1; justify-content: center; align-items: center;">
+      
+      <ion-spinner name="dots" style="color:#000"></ion-spinner>
+      <p style="color: black; text-align: center;">Carregando informações...</p>
+    </div>
+    <ion-card *ngIf="data.PaginaCarregada" >
       <!--<b style="font-size: 13px">SÃO BENTO KIDS</b>
       <p >AVENIDA PROFESSOR VITAL BARBOSA, 565, PONTA VERDE, MACEIÓ - AL</p>
       <p >CEP: 57.035-400 Fone/Fax: (82) 3435-3857</p>

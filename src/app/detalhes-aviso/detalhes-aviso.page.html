@@ -15,7 +15,11 @@
 <ion-content [fullscreen]="true">
   
   <div id="container">
-    <ion-card >
+    <div *ngIf="!data.PaginaCarregada" id="container" style="flex: 1; justify-content: center; align-items: center;">
+      <ion-spinner name="dots"></ion-spinner>
+      <p style="color: black; text-align: center;">Carregando informações...</p>
+    </div>
+    <ion-card *ngIf="data.PaginaCarregada" >
       <b style="font-size: 20px">{{data.Title}}</b>
       <b style="margin-top: 20px">{{data.Subtitle}}</b>
       <div style="margin-top: 20px;"[innerHTML]="data.Content | safeHtml"></div>

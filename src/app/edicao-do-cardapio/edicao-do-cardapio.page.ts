@@ -81,8 +81,10 @@ export class EdicaoDoCardapioPage implements OnInit {
   }
   ngOnInit() {
     $('#summernote').summernote({
-      height: '200',
-      width: $(window).width() * 0.8,
+      
+      height: '50vh',
+      width: "100%",
+      
       toolbar: [
         ['style', ['bold', 'italic', 'underline']],
         ['para', ['ul', 'ol', 'paragraph']],

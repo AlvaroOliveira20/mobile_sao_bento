@@ -11,19 +11,22 @@ import { DomSanitizer } from '@angular/platform-browser'
 })
 export class VisualizarCardapioPage implements OnInit {
   public data: any = {
-    Title: 'Carregando...',
-    Subtitle: 'Aguarde...',
-    Content: '',
+    PaginaCarregada: null,
+    Title: null,
+    Subtitle: null,
+    Content: null,
 
   };
   constructor(private sanitizer: DomSanitizer, private afs: AngularFirestore, public router: Router) { }
   async ionViewWillEnter() {
+    this.data.PaginaCarregada = false;
     this.data = (
       await this.afs.firestore
         .collection('Cardapio')
         .doc("cardapio")
         .get()
     ).data();
+    this.data.PaginaCarregada = true
 
   }
   navBack() {

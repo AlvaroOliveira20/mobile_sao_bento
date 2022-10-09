@@ -166,7 +166,7 @@ export class CadastroDadosPage implements OnInit {
     return this.loading.present();
   }
   async cadastrar() {
-    if (this.user.Senha == this.user.Senha2) {
+    
       if (!this.user.NomeResponsavel) {
         this.presentToast('Digite o nome do responsável!');
       } else if (!this.user.CpfResponsavel) {
@@ -188,6 +188,7 @@ export class CadastroDadosPage implements OnInit {
             DataResponsavel: this.user.DataResponsavel,
             Endereco: this.user.Endereco,
             Email: this.user.Email,
+            Admin: false
           });
 
           await this.presentAlertConfirm();
@@ -205,11 +206,7 @@ export class CadastroDadosPage implements OnInit {
           this.loading.dismiss();
         }
       }
-    } else {
-      this.presentToast(
-        'As senhas não conferem! Verifique-as e tente novamente.'
-      );
-    }
+    
     
   }
   

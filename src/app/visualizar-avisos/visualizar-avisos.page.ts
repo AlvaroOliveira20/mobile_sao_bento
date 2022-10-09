@@ -14,6 +14,7 @@ export class VisualizarAvisosPage implements OnInit {
     public router: Router,
     private afs: AngularFirestore
   ) {}
+  PaginaCarregada=false;
   avisos = [];
   ativos = 0;
   inativos = 0;
@@ -26,6 +27,7 @@ export class VisualizarAvisosPage implements OnInit {
     this.router.navigateByUrl('/detalhes-aviso');
   }
   async ionViewWillEnter() {
+    this.PaginaCarregada= false
     this.avisos = [];
     let avisos: any = await this.afs.firestore.collection('Avisos').get();
     avisos = avisos.docs.map((doc) => doc.data());
@@ -40,12 +42,13 @@ export class VisualizarAvisosPage implements OnInit {
         avisos[i].CanShow = true
         this.ativos++
       }
-
+      
 
       
 
       this.avisos.push(avisos[i]);
     }
+    this.PaginaCarregada= true
   }
   navBack() {
     this.router.navigateByUrl('/inicio');

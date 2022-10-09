@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar class="toolbar">
-    <ion-title >SOLICITAÇÕES DE MATRÍCULA</ion-title>
+    <ion-title>SOLICITAÇÕES DE MATRÍCULA</ion-title>
 
     <ion-buttons slot="start">
       <ion-icon
@@ -13,48 +13,40 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content [fullscreen]="true">
   <ion-tabs>
+    <div style="overflow-y: scroll; padding-top:80px">
+    <div
+      style="
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      "
+      *ngFor="let i of matriculas"
+    >
+      <ion-card
+        style="padding-top: 20px; padding-bottom: 20px"
+        (click)="visualizar(i.numeroSolicitacao)"
+      >
+      <p style="margin-bottom: 10px; color: #000">
+        Nº {{i.numeroSolicitacao}}
+      </p>
+        <p style="margin-bottom: 10px; color: #000">
+          Responsável: {{i.Responsavel}}
+        </p>
 
-    
-    <div id="container"  *ngIf="tab==1">
-      <b *ngIf="ativos==0" style="font-size: 20px">Não há avisos ativos</b>
-      <div style="width: 100%; justify-content: center; align-items: center; display: flex" *ngFor="let i of avisos">
-        <ion-card
-          *ngIf="i.CanShow"
-          style="padding-top: 40px; padding-bottom: 40px"
-          (click)="visualizar(i.uid)"
-        >
-          <p style="margin-bottom: 10px; color: #000">
-            De {{i.CriadoEm}} a {{i.Validade}}
-          </p>
+        <b style="font-size: 20px">Aluno: {{i.NomeAluno}}</b>
 
-          <b style="font-size: 20px">{{i.Title}}</b>
-
-          <p style="margin-top: 10px; color: #000">{{i.Subtitle}}</p>
-        </ion-card>
-      </div>
+        <b *ngIf="i.Confirmado=='ativa'" style="color: green; margin-top: 10px; ">ATIVA</b>
+        <b *ngIf="i.Confirmado=='aguardando-pagamento'" style="color: rgb(241, 145, 0); margin-top: 10px; ">AGUARDANDO PAGAMENTO</b>
+        <b *ngIf="i.Confirmado=='aguardando-aprovacao'" style="color: red; margin-top: 10px; ">AGUARDANDO APROVAÇÃO</b>
+        <b *ngIf="i.Confirmado=='inativa'" style="color: red; margin-top: 10px; ">INATIVA</b>
+        <b *ngIf="i.Confirmado=='revogada'" style="color: red; margin-top: 10px; ">REVOGADA</b>
+      </ion-card>
     </div>
-    <div id="container"  *ngIf="tab==2">
-      <b *ngIf="inativos==0" style="font-size: 20px">Não há avisos inativos</b>
-      <div style="width: 100%; justify-content: center; align-items: center; display: flex" *ngFor="let i of avisos">
-        <ion-card
-          *ngIf="!i.CanShow"
-          style="padding-top: 40px; padding-bottom: 40px"
-          (click)="visualizar(i.uid)"
-        >
-          <p style="margin-bottom: 10px; color: #000">
-            De {{i.CriadoEm}} a {{i.Validade}}
-          </p>
+  </div>
 
-          <b style="font-size: 20px">{{i.Title}}</b>
-
-          <p style="margin-top: 10px; color: #000">{{i.Subtitle}}</p>
-        </ion-card>
-      </div>
-    </div>
-    <ion-tab-bar style="--background: rgb(247, 228, 193)" slot="bottom">
+    <ion-tab-bar style="--background: rgb(247, 228, 193); min-height: 70px" slot="bottom">
       <ion-tab-button
         (click)="activateTab(1)"
         style="background-color: {{bg1}}; border-radius: 10px; margin:2px"

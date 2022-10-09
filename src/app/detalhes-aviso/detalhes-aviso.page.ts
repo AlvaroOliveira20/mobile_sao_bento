@@ -10,18 +10,21 @@ import { Router } from '@angular/router';
 export class DetalhesAvisoPage implements OnInit {
   constructor(private afs: AngularFirestore, public router: Router) {}
   public data: any = {
-    Title: 'Carregando...',
-    Subtitle: 'Aguarde...',
-    Content: '',
+    PaginaCarregada: null,
+    Title: null,
+    Subtitle: null,
+    Content: null,
   };
   ngOnInit() {}
   async ionViewWillEnter() {
+    this.data.PaginaCarregada = false;
     this.data = (
       await this.afs.firestore
         .collection('Avisos')
         .doc(localStorage.getItem('uid'))
         .get()
     ).data();
+    this.data.PaginaCarregada = true
   }
   navBack() {
     this.router.navigateByUrl('/visualizar-avisos');

@@ -15,6 +15,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from './../environments/environment';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
+import {File} from '@ionic-native/file/ngx';
 @NgModule({
   declarations: [AppComponent, SafeHtmlPipe],
   entryComponents: [],
@@ -29,7 +31,8 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     AngularFireAuthModule,
     AngularFirestoreModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  
+  providers: [File, AndroidPermissions, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

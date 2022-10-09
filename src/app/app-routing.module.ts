@@ -58,6 +58,14 @@ const routes: Routes = [
     path: 'matricular-aluno',
     loadChildren: () => import('./matricular-aluno/matricular-aluno.module').then( m => m.MatricularAlunoPageModule)
   },
+  {
+    path: 'visualizar-matricula',
+    loadChildren: () => import('./visualizar-matricula/visualizar-matricula.module').then( m => m.VisualizarMatriculaPageModule)
+  },
+  {
+    path: 'matriculas',
+    loadChildren: () => import('./matriculas/matriculas.module').then( m => m.MatriculasPageModule)
+  },
 ];
 
 @NgModule({

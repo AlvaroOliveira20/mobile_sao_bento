@@ -19,8 +19,9 @@ export class SolicitacoesDeMatriculaPage implements OnInit {
   tab = 1;
   ngOnInit() {}
 
-  async ionViewWillEnter() {
-  }
+  matriculas = [];
+  ativos = 0;
+  inativos = 0;
   navBack() {
     this.router.navigateByUrl('/inicio');
   }
@@ -33,6 +34,30 @@ export class SolicitacoesDeMatriculaPage implements OnInit {
       this.tab = 2;
       this.bg2 = 'rgb(250, 220, 165)';
       this.bg1 = 'rgba(0,0,0,0)';
+    }
+  }
+  async visualizar(uid) {
+    localStorage.setItem('uid', uid);
+    this.router.navigateByUrl('/visualizar-matricula');
+  }
+  async ionViewWillEnter() {
+    this.matriculas = [];
+    let matriculas: any = await this.afs.firestore.collection('Matriculas').get();
+    matriculas = matriculas.docs.map((doc) => doc.data());
+    for (let i in matriculas) {
+      //let data = matriculas[i].Validade;
+      //var partesData = data.split("/");
+      //var dataFinal = new Date(partesData[2], partesData[1] - 1, Number(partesData[0])+1);
+      // if(dataFinal < new Date()){
+      //   matriculas[i].CanShow = false
+      //   this.inativos++
+      // }else{
+      //   matriculas[i].CanShow = true
+      //   this.ativos++
+      let data: any = (await this.afs.firestore.collection('Users').doc(matriculas[i].uid).get()).data()
+      matriculas[i].Responsavel = data.NomeResponsavel
+      // }
+      this.matriculas.push(matriculas[i]);
     }
   }
 }

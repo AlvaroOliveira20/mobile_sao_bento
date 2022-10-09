@@ -12,36 +12,48 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
   <div
     style="
       width: 100%;
       justify-content: center;
       align-items: center;
       display: flex;
+      height: 100%;
       flex-direction: column;
     "
-    *ngFor="let i of avisos"
   >
-    <ion-card
-      style="padding-top: 40px; padding-bottom: 40px"
-      (click)="editar(i.uid)"
+    <div
+      style="
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 100%;
+        align-items: center;
+      "
     >
-      <p *ngIf="!i.CanShow" style="color: #f00">AVISO EXPIRADO</p>
+      <ion-card
+        *ngFor="let i of avisos"
+        style="padding-top: 40px; padding-bottom: 40px"
+        (click)="editar(i.uid)"
+      >
+        <p *ngIf="!i.CanShow" style="color: #f00">AVISO EXPIRADO</p>
 
-      <b style="font-size: 20px">{{i.Title}}</b>
+        <b style="font-size: 20px">{{i.Title}}</b>
 
-      <p style="margin-top: 10px; color: #000">{{i.Subtitle}}</p>
-    </ion-card>
-  </div>
-  <div
-    style="
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    "
-  >
-    <ion-button (click)="criar()">CRIAR AVISO</ion-button>
+        <p style="margin-top: 10px; color: #000">{{i.Subtitle}}</p>
+      </ion-card>
+    </div>
+    <div
+      style="
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <ion-button (click)="criar()">CRIAR AVISO</ion-button>
+    </div>
   </div>
 </ion-content>
